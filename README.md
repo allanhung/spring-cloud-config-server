@@ -1,9 +1,9 @@
 # Helm Charts for Spring Cloud Config Server
 ## Build and push to repository
 ```
-docker build -t allanhung/spring-cloud-config-server:2.1.3 .
+docker build -t allanhung/spring-cloud-config-server:2.1.4 .
 docker login 
-docker push allanhung/spring-cloud-config-server:2.1.3
+docker push allanhung/spring-cloud-config-server:2.1.4
 ```
 
 ## deploy into kubernetes

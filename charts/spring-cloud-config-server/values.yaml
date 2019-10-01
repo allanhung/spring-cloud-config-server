@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: allanhung/spring-cloud-config-server
-  tag: 2.1.3
+  tag: 2.1.4
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -57,5 +57,7 @@ config:
 
 secrets:
   required: false
+  ignoreLocalSshSettings: false
+  strictHostKeyChecking: false
   gitUsername:
   gitPassword:

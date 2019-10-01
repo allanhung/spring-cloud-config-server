@@ -39,6 +39,12 @@ spec:
             httpGet:
               path: /actuator/health
               port: http
+          {{- if not .Values.secrets.ignoreLocalSshSettings }}
+          volumeMounts:
+          - name: {{ include "spring-cloud-config-server.name" . }}-ssh-key
+            readOnly: true
+            mountPath: "/root/.ssh"
+          {{- end}}
           env:
           {{- if .Values.config.gitUri }}
           - name: SPRING_CLOUD_CONFIG_SERVER_GIT_URI
@@ -51,6 +57,10 @@ spec:
           - name: SPRING_CLOUD_CONFIG_SERVER_GIT_SEARCHPATHS
             value: "{{ .Values.config.gitSearchpath }}"
           {{- end}}
+          - name: SPRING_CLOUD_CONFIG_SERVER_GIT_IGNORELOCALSSHSETTINGS
+            value: "{{ .Values.secrets.ignoreLocalSshSettings }}"
+          - name: SPRING_CLOUD_CONFIG_SERVER_GIT_STRICTHOSTKEYCHECKING
+            value: "{{ .Values.secrets.strictHostKeyChecking }}"
           {{- if .Values.secrets.required }}
           - name: SPRING_CLOUD_CONFIG_SERVER_GIT_USERNAME
             valueFrom:
@@ -68,6 +78,12 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- if not .Values.secrets.ignoreLocalSshSettings }}
+      volumes:
+      - name: {{ include "spring-cloud-config-server.name" . }}-ssh-key
+        secret: 
+          secretName: {{ include "spring-cloud-config-server.name" . }}-ssh-key
+      {{- end}}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

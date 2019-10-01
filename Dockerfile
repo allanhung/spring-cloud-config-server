@@ -9,7 +9,7 @@ COPY config-repo /config/
 VOLUME /config
 
 WORKDIR /
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar",\
-            "/opt/spring-cloud-config-server/target/spring-cloud-config-server.jar",\
-            "--server.port=8888",\
-            "--spring.config.name=application"]
+CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar",\
+     "/opt/spring-cloud-config-server/target/spring-cloud-config-server.jar",\
+     "--server.port=8888",\
+     "--spring.config.name=application"]

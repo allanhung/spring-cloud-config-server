@@ -32,7 +32,7 @@ The following table lists the configurable parameters of the spring-cloud-config
 | Parameter                                  | Description                               | Default                            |
 | ------------------------------------------ | ----------------------------------------- | ---------------------------------- |
 | `image.repository`                         | Docker image repo                         | `allanhung/spring-cloud-config-server`|
-| `image.tag`                                | Docker image                              | `2.1.3`                            |
+| `image.tag`                                | Docker image                              | `2.1.4`                            |
 | `image.pullPolicy`                         | Docker image pull policy                  | `IfNotPresent`                     |
 | `image.pullSecrets`                        | Docker image pull secrets                 |                                    |
 | `service.type`                             | Service type                              | `ClusterIP`                        |
@@ -51,6 +51,8 @@ The following table lists the configurable parameters of the spring-cloud-config
 | `config.gitUri`                            | git repo URL                              | `file:/config`                     |
 | `config.gitSearchpath`                     | git search path                           |                                    |
 | `secrets.required`                         | required git secrets                      | `false`                            |
+| `secrets.ignoreLocalSshSettings`           | If true, use property-based instead of file-based SSH config | `false`         |
+| `secrets.strictHostKeyChecking`            | If false, ignore errors with host key     | `false`                            |
 | `secrets.gitUsername`                      | git username                              | `{}`                               |
 | `secrets.gitPassword`                      | git password                              | `{}`                               |
 
