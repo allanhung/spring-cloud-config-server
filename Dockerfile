@@ -5,7 +5,6 @@ COPY pom.xml /opt/spring-cloud-config-server/
 WORKDIR /opt/spring-cloud-config-server/
 RUN mvn package
 RUN mkdir /config
-COPY config-repo /config/
 VOLUME /config
 
 WORKDIR /
